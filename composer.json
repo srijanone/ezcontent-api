@@ -8,6 +8,13 @@
   "support": {
     "issues": "https://github.com/srijanone/ezcontent_api",
     "source": "https://github.com/srijanone/ezcontent_api"
+  },
+  "require": {
+    "drupal/decoupled_router": "^1.11",
+    "drupal/openapi": "^2",
+    "drupal/openapi_ui": "^1.0@RC",
+    "drupal/openapi_ui_redoc": "^1.0@RC",
+    "drupal/openapi_ui_swagger": "^1.0@RC"
   }
 }
 
