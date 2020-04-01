@@ -4,9 +4,9 @@ description: 'Improves Drupal core JSONAPI experience.'
 package: EZContent API
 core: 8.x
 dependencies:
-  - decoupled_router
-  - jsonapi_defaults
-  - openapi
-  - openapi_ui_redoc
-  - openapi_ui_swagger
-  - simple_oauth_extras
+  - decoupled_router:decoupled_router
+  - jsonapi_extras:jsonapi_defaults
+  - openapi:openapi
+  - openapi_ui_redoc:openapi_ui_redoc
+  - openapi_ui_swagger:openapi_ui_swagger
+  - simple_oauth:simple_oauth_extras
