@@ -15,5 +15,15 @@
     "drupal/openapi_ui": "^1.0@RC",
     "drupal/openapi_ui_redoc": "^1.0@RC",
     "drupal/openapi_ui_swagger": "^1.0@RC"
+  },
+  "extra": {
+    "patches": {
+      "drupal/core": {
+        "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2019-11-21/layout_builder-export-content-2942975-67.patch"
+      },
+      "drupal/metatag": {
+        "Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-23/2945817-87.patch"
+      }
+    }
   }
 }
