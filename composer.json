@@ -10,6 +10,7 @@
     "source": "https://github.com/srijanone/ezcontent_api"
   },
   "require": {
+    "drupal/access_unpublished": "^1.0@alpha",
     "drupal/decoupled_router": "^1.11",
     "drupal/openapi": "^2",
     "drupal/openapi_ui": "^1.0@RC",
