@@ -1,0 +1,116 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/admin\/config\/services\/consumer\/2?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/consumer\/consumer"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/consumer\/consumer\/owner_id": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": 2
+        }
+    ],
+    "uuid": [
+        {
+            "value": "2ea87cec-703f-4908-8f3d-2689c7ec3723"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/consumer\/consumer\/owner_id": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "2f97f55c-16e8-4220-a61d-7826fdac8283"
+                    }
+                ],
+                "lang": "en"
+            }
+        ]
+    },
+    "label": [
+        {
+            "value": "Api User",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "value": "Api User",
+            "lang": "en"
+        }
+    ],
+    "third_party": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "is_default": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "| ezcontent"
+            }
+        }
+    ],
+    "metatag_normalized": [
+        {
+            "tag": "meta",
+            "attributes": {
+                "name": "title",
+                "content": "| ezcontent"
+            },
+            "lang": "en"
+        }
+    ],
+    "confidential": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "roles": [
+        {
+            "target_id": "api"
+        }
+    ],
+    "pkce": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ]
+}
