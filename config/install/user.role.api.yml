@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: api
+label: 'Api user'
+weight: -5
+is_admin: null
+permissions:
+  - 'administer display modes'
+  - 'use text format restricted_html'
