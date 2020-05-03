@@ -94,32 +94,6 @@
             "lang": "en"
         }
     ],
-    "metatag": [
-        {
-            "value": {
-                "title": "apiuser | ezcontent",
-                "description": "ezcontent"
-            }
-        }
-    ],
-    "metatag_normalized": [
-        {
-            "tag": "meta",
-            "attributes": {
-                "name": "title",
-                "content": "apiuser | ezcontent"
-            },
-            "lang": "en"
-        },
-        {
-            "tag": "meta",
-            "attributes": {
-                "name": "description",
-                "content": "ezcontent"
-            },
-            "lang": "en"
-        }
-    ],
     "path": [
         {
             "alias": null,

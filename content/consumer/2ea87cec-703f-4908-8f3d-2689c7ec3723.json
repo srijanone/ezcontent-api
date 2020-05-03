@@ -79,23 +79,6 @@
             "lang": "en"
         }
     ],
-    "metatag": [
-        {
-            "value": {
-                "title": "| ezcontent"
-            }
-        }
-    ],
-    "metatag_normalized": [
-        {
-            "tag": "meta",
-            "attributes": {
-                "name": "title",
-                "content": "| ezcontent"
-            },
-            "lang": "en"
-        }
-    ],
     "confidential": [
         {
             "value": false,
