@@ -12,6 +12,7 @@
   "require": {
     "drupal/access_unpublished": "^1.0@alpha",
     "drupal/decoupled_router": "^1.11",
+    "drupal/gatsby": "^1.0@beta",
     "drupal/openapi": "^2",
     "drupal/openapi_ui": "^1.0@RC",
     "drupal/openapi_ui_redoc": "^1.0@RC",
