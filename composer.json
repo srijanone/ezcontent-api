@@ -20,7 +20,7 @@
   "extra": {
     "patches": {
       "drupal/core": {
-        "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2019-11-21/layout_builder-export-content-2942975-67.patch"
+        "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2020-05-20/2942975-100.patch"
       },
       "drupal/metatag": {
         "Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-23/2945817-87.patch"
