@@ -13,6 +13,7 @@
     "drupal/access_unpublished": "^1.0@alpha",
     "drupal/decoupled_router": "^1.11",
     "drupal/gatsby": "^1.0@beta",
+    "drupal/jsonapi_extras": "^3.12",
     "drupal/openapi": "^2",
     "drupal/openapi_ui": "^1.0@RC",
     "drupal/openapi_ui_redoc": "^1.0@RC",
@@ -22,6 +23,9 @@
     "patches": {
       "drupal/core": {
         "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2020-05-20/2942975-100.patch"
+      },
+   "drupal/jsonapi_extras": {
+        "Link enhancer to add Aliased URL for internal links": "https://www.drupal.org/files/issues/2019-03-08/jsonapi_extras-Field-enhancer-for-URL-alias-2942851-24.patch"
       },
       "drupal/metatag": {
         "Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-23/2945817-87.patch"
