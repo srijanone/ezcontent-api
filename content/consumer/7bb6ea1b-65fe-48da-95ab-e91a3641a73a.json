@@ -1,0 +1,99 @@
+{
+  "_links": {
+    "self": {
+      "href": "http:\/\/default\/admin\/config\/services\/consumer\/2?_format=hal_json"
+    },
+    "type": {
+      "href": "http:\/\/drupal.org\/rest\/type\/consumer\/consumer"
+    },
+    "http:\/\/drupal.org\/rest\/relation\/consumer\/consumer\/owner_id": [
+      {
+        "href": "http:\/\/default\/user\/0?_format=hal_json",
+        "lang": "en"
+      }
+    ]
+  },
+  "id": [
+    {
+      "value": 2
+    }
+  ],
+  "uuid": [
+    {
+      "value": "7bb6ea1b-65fe-48da-95ab-e91a3641a73a"
+    }
+  ],
+  "langcode": [
+    {
+      "value": "en",
+      "lang": "en"
+    }
+  ],
+  "_embedded": {
+    "http:\/\/drupal.org\/rest\/relation\/consumer\/consumer\/owner_id": [
+      {
+        "_links": {
+          "self": {
+            "href": "http:\/\/default\/user\/0?_format=hal_json"
+          },
+          "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+          }
+        },
+        "uuid": [
+          {
+            "value": "bdb1f162-2864-4083-a4cb-e53330c5ed46"
+          }
+        ],
+        "lang": "en"
+      }
+    ]
+  },
+  "label": [
+    {
+      "value": "Decoupled Apps",
+      "lang": "en"
+    }
+  ],
+  "description": [
+    {
+      "value": "EZContent API User for Decoupled Apps.",
+      "lang": "en"
+    }
+  ],
+  "third_party": [
+    {
+      "value": true,
+      "lang": "en"
+    }
+  ],
+  "is_default": [
+    {
+      "value": false,
+      "lang": "en"
+    }
+  ],
+  "default_langcode": [
+    {
+      "value": true,
+      "lang": "en"
+    }
+  ],
+  "confidential": [
+    {
+      "value": false,
+      "lang": "en"
+    }
+  ],
+  "roles": [
+    {
+      "target_id": "api"
+    }
+  ],
+  "pkce": [
+    {
+      "value": false,
+      "lang": "en"
+    }
+  ]
+}
