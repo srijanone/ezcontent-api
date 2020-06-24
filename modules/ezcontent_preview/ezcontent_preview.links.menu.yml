@@ -1,5 +1,5 @@
 ezcontent.preview.config:
-  title: 'EZContent preview'
+  title: 'EZContent preview settings'
   route_name: entity.ezcontent_preview.collection
   description: 'EZContent preview configuration'
   parent: system.admin_config_system
