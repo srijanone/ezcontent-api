@@ -13,6 +13,7 @@
     "drupal/access_unpublished": "^1.0@alpha",
     "drupal/decoupled_router": "^1.11",
     "drupal/gatsby": "^1.0@beta",
+    "drupal/jsonapi_hypermedia": "^1.6",
     "drupal/jsonapi_extras": "^3.12",
     "drupal/openapi": "^2",
     "drupal/openapi_ui": "^1.0@RC",
