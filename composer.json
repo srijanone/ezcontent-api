@@ -1,13 +1,13 @@
 {
-  "name": "srijanone/ezcontent_api",
+  "name": "drupal/ezcontent_api",
   "description": "Enable api support and preview module",
   "keywords": ["ezcontent", "preview", "Drupal"],
   "type": "drupal-module",
   "license": "GPL-2.0+",
-  "homepage": "https://github.com/srijanone/ezcontent_api",
+  "homepage": "https://www.drupal.org/project/ezcontent_api",
   "support": {
-    "issues": "https://github.com/srijanone/ezcontent_api",
-    "source": "https://github.com/srijanone/ezcontent_api"
+    "issues": "https://www.drupal.org/project/issues/ezcontent_api",
+    "source": "https://git.drupalcode.org/project/ezcontent_api"
   },
   "require": {
     "drupal/access_unpublished": "^1.0@alpha",
