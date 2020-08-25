@@ -22,7 +22,7 @@ class AccessUnpublishedToken extends FilterPluginBase {
    */
   public function init(ViewExecutable $view, DisplayPluginBase $display, array &$options = NULL) {
     parent::init($view, $display, $options);
-    $this->valueTitle = t('Published or Unpublish Access Token');
+    $this->valueTitle = $this->t('Published or Unpublish Access Token');
   }
   /**
    * Override the query so that no filtering takes place if the user doesn't
