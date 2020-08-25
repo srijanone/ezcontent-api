@@ -3,8 +3,6 @@
 namespace Drupal\ezcontent_preview\Plugin\Derivative;
 
 use Drupal\Component\Plugin\Derivative\DeriverBase;
-use Drupal\ezcontent_preview\Utils;
-use Drupal\Core\Url;
 
 /**
  * Defines dynamic local tasks.
