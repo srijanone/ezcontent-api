@@ -46,38 +46,45 @@ use Drupal\ezcontent_preview\PreviewInterface;
 class Preview extends ConfigEntityBase implements PreviewInterface {
 
   /**
+   * Defining url.
    *
    * @var string
    */
   public $url;
 
   /**
+   * Defining id.
    *
    * @var string
    */
   public $id;
 
   /**
+   * Defining label.
    *
    * @var string
    */
   public $label;
 
   /**
+   * Defining newTab.
    *
-   * @var boolean
+   * @var bool
    */
   public $newtab;
 
   /**
+   * Defining tokenTime.
    *
    * @var string
    */
   public $token_time;
 
   /**
+   * Defining contentEntity.
    *
    * @var string
    */
   public $content_entity;
+
 }

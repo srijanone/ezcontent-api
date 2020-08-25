@@ -3,13 +3,12 @@
 namespace Drupal\ezcontent_preview\Plugin\views\filter;
 
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
-use Drupal\views\Plugin\views\filter\InOperator;
 use Drupal\views\ViewExecutable;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\filter\FilterPluginBase;
 use Drupal\views\Views;
 
 /**
+ * Access Unpublished Token.
  *
  * @ingroup views_filter_handlers
  *
@@ -24,12 +23,12 @@ class AccessUnpublishedToken extends FilterPluginBase {
     parent::init($view, $display, $options);
     $this->valueTitle = $this->t('Published or Unpublish Access Token');
   }
+
   /**
-   * Override the query so that no filtering takes place if the user doesn't
-   * select any options.
+   * Overriding to stop filtering when no options selected.
    */
   public function query() {
-    // build query and join tables
+    // Build query and join tables.
     $configuration = [
       'table' => "node",
       'field' => 'nid',
@@ -39,17 +38,20 @@ class AccessUnpublishedToken extends FilterPluginBase {
     ];
     $join = Views::pluginManager('join')->createInstance('standard', $configuration);
     $this->query->addRelationship('node', $join, 'node_field_data');
-    
-    // default value for snippet
+
+    // Default value for snippet.
     $snippet = "node_field_data.status = 1";
 
     $tokenNid = $this->checkTokenAuthNid();
-    if($tokenNid) {
+    if ($tokenNid) {
       $snippet = "node_field_data.status = 1 OR node.nid = " . $tokenNid;
-    } 
+    }
     $this->query->addWhereExpression($this->options['group'], $snippet);
   }
 
+  /**
+   * Checking the token auth.
+   */
   public function checkTokenAuthNid() {
     $tokenKey = \Drupal::config('access_unpublished.settings')->get('hash_key');
     if (\Drupal::request()->query->has($tokenKey)) {

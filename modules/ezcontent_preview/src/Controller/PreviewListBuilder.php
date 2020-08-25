@@ -6,7 +6,7 @@ use Drupal\Core\Config\Entity\ConfigEntityListBuilder;
 use Drupal\Core\Entity\EntityInterface;
 
 /**
- * Provides a listing
+ * Provides a listing.
  */
 class PreviewListBuilder extends ConfigEntityListBuilder {
 
@@ -29,7 +29,6 @@ class PreviewListBuilder extends ConfigEntityListBuilder {
     $row['id'] = $entity->id;
 
     // You probably want a few more properties here...
-
     return $row + parent::buildRow($entity);
   }
 
