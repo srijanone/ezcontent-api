@@ -32,11 +32,19 @@ class PreviewView extends ControllerBase {
   protected $routeMatch;
 
   /**
+   * The utils service.
+   *
+   * @var \Drupal\ezcontent_preview\Utils
+   */
+  protected $utils;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entityTypeManager, RouteMatchInterface $routeMatch) {
+  public function __construct(EntityTypeManagerInterface $entityTypeManager, RouteMatchInterface $routeMatch, Utils $utils) {
     $this->entityTypeManager = $entityTypeManager;
     $this->routeMatch = $routeMatch;
+    $this->utils = $utils;
   }
 
   /**
@@ -45,7 +53,8 @@ class PreviewView extends ControllerBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity_type.manager'),
-      $container->get('current_route_match')
+      $container->get('current_route_match'),
+      $container->get('ezcontent_preview.utils')
     );
   }
 
@@ -61,8 +70,7 @@ class PreviewView extends ControllerBase {
     if ($preview_type) {
       $decoupledRoutes = $this->entityTypeManager->getStorage('ezcontent_preview')->load($preview_type);
       if ($decoupledRoutes) {
-        $urlUtils = new Utils();
-        $url = $urlUtils->buildUrl($node, $decoupledRoutes);
+        $url = $this->utils->buildUrl($node, $decoupledRoutes);
         if ($url) {
           // If new tab open seperate a tab with decoupled URL
           // else just iframe.
