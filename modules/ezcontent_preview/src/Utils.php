@@ -9,6 +9,7 @@ use Drupal\node\NodeInterface;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\access_unpublished\AccessTokenManager;
 use Drupal\Core\Url;
+use Drupal\path_alias\AliasManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -40,7 +41,7 @@ class Utils {
   /**
    * The path alias manager.
    *
-   * @var \Drupal\Core\Path\AliasManagerInterface
+   * @var \Drupal\path_alias\AliasManagerInterface
    */
   protected $aliasManager;
 
@@ -78,7 +79,7 @@ class Utils {
       $container->get('entity_type.manager'),
       $container->get('config.factory'),
       $container->get('messenger'),
-      $container->get('path.alias_manager'),
+      $container->get('path_alias.manager'),
       $container->get('datetime.time'),
       $container->get('access_unpublished.access_token_manager')
     );
