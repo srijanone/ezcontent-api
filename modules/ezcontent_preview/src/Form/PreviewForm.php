@@ -64,7 +64,7 @@ class PreviewForm extends EntityForm {
       '#required' => TRUE,
     ];
 
-    $nodeTypes = $this->entityTypeManager->getStorage('node')->loadMultiple();
+    $nodeTypes = $this->entityTypeManager->getStorage('node_type')->loadMultiple();
     // If you need to display them in a drop down:
     $nodeOptions = [];
     foreach ($nodeTypes as $nodeType) {
