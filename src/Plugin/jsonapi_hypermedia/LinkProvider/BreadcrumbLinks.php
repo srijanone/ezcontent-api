@@ -109,14 +109,15 @@ class BreadcrumbLinks extends LinkProviderBase implements ContainerFactoryPlugin
     $entity = $this->routeMatch->getParameter('entity');
     $linkAttributes = [];
     $url = Url::fromRoute('<front>');
+    $access_result = AccessResult::allowedIf(FALSE);
     if ($entity) {
       $breadCrumbLinks = $this->ezconteBreadcrumbBuilder->build($this->routeMatch);
       $linkAttributes = [
         'data' => $breadCrumbLinks,
       ];
       $url = Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]);
+      $access_result = AccessResult::allowedIf($entity->access('view'));
     }
-    $access_result = AccessResult::allowedIf($entity->access('view'));
     return AccessRestrictedLink::createLink($access_result, CacheableMetadata::createFromObject($resource_object), $url, $this->getLinkRelationType(), $linkAttributes);
   }
 
