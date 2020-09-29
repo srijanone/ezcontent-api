@@ -17,7 +17,7 @@
     "drupal/jsonapi_extras": "^3.12",
     "drupal/jsonapi_boost": "^1.0",
     "drupal/jsonapi_role_access": "^1.0",
-    "drupal/jsonapi_views": "1.x-dev#3bb6e7d9",
+    "drupal/jsonapi_views": "1.x-dev#bd88808",
     "drupal/openapi": "^2",
     "drupal/openapi_ui": "^1.0@RC",
     "drupal/openapi_ui_redoc": "^1.0@RC",
@@ -35,9 +35,6 @@
       },
       "drupal/metatag": {
         "Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-23/2945817-87.patch"
-      },
-      "drupal/jsonapi_views": {
-        "3158566 - Adding pagination in json api views" : "https://www.drupal.org/files/issues/2020-07-13/json_api-pagination_links_missing-3158566-2.patch"
       }
     }
   }
