@@ -8,6 +8,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Url;
 use Drupal\jsonapi_hypermedia\AccessRestrictedLink;
 use Drupal\jsonapi_hypermedia\Plugin\LinkProviderBase;
+use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\ezcontent_api\Breadcrumb\EzcontentBreadcrumbBuilder;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -110,7 +111,7 @@ class BreadcrumbLinks extends LinkProviderBase implements ContainerFactoryPlugin
     $linkAttributes = [];
     $url = Url::fromRoute('<front>');
     $access_result = AccessResult::allowedIf(FALSE);
-    if ($entity) {
+    if ($entity instanceof NodeInterface) {
       $breadCrumbLinks = $this->ezconteBreadcrumbBuilder->build($this->routeMatch);
       $linkAttributes = [
         'data' => $breadCrumbLinks,

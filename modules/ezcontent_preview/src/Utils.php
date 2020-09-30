@@ -112,10 +112,8 @@ class Utils {
     if (!$node->isPublished()) {
 
       $tokenKey = $this->configFactory->get('access_unpublished.settings')->get('hash_key');
-      $tokenManager = $this->accessToken($this->configFactory, $this->entityTypeManager);
-      $activeToken = $tokenManager->getActiveAccessToken($node);
+      $activeToken = $this->accessToken->getActiveAccessToken($node);
       if (!$activeToken) {
-
         $activeToken = $this->buildToken($node);
       }
       $tokenValue = $activeToken->get('value')->value;
@@ -140,7 +138,7 @@ class Utils {
       [
         'entity_type' => $entity->getEntityType()->id(),
         'entity_id' => $entity->id(),
-        'expire' => $this->timeService->getRequestTime() + $tokenKey,
+        'expire' => $this->time->getRequestTime() + $tokenKey,
       ]
     );
     $access_token->save();
