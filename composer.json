@@ -11,7 +11,7 @@
   },
   "require": {
     "drupal/access_unpublished": "^1.0",
-    "drupal/decoupled_router": "^1.12",
+    "drupal/decoupled_router": "^2.0",
     "drupal/gatsby": "^1.0@beta",
     "drupal/jsonapi_hypermedia": "^1.6",
     "drupal/jsonapi_extras": "^3.12",
