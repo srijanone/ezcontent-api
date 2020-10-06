@@ -4,6 +4,7 @@ namespace Drupal\ezcontent_api\Plugin\jsonapi_hypermedia\LinkProvider;
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Link;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Url;
 use Drupal\jsonapi_hypermedia\AccessRestrictedLink;
@@ -112,9 +113,16 @@ class BreadcrumbLinks extends LinkProviderBase implements ContainerFactoryPlugin
     $url = Url::fromRoute('<front>');
     $access_result = AccessResult::allowedIf(FALSE);
     if ($entity instanceof NodeInterface) {
-      $breadCrumbLinks = $this->ezconteBreadcrumbBuilder->build($this->routeMatch);
+      $breadCrumb = $this->ezconteBreadcrumbBuilder->build($this->routeMatch);
+      $breadcrumbLinks = [];
+      foreach ($breadCrumb->getLinks() as $link) {
+        $breadcrumbLinks[] = [
+          'text' => ($link instanceof Link) ? $link->getText() : $link,
+          'url' => ($link instanceof Link) ? $link->getUrl()->toString() : '',
+        ];
+      }
       $linkAttributes = [
-        'data' => $breadCrumbLinks,
+        'data' => $breadcrumbLinks,
       ];
       $url = Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]);
       $access_result = AccessResult::allowedIf($entity->access('view'));
