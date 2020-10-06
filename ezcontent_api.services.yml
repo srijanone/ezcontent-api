@@ -1,10 +1,4 @@
 services:
-  ezcontent_api_normalizer.breadcrumb:
-    class: Drupal\ezcontent_api\Normalizer\EzcontentBreadcrumbNormalizer
-    arguments: ['@entity.manager']
-    tags:
-      - { name: normalizer, priority: 2 }
-
   ezcontent_api_normalizer.ezcontent_breadcrumb:
     class: Drupal\ezcontent_api\Breadcrumb\EzcontentBreadcrumbBuilder
     tags:
