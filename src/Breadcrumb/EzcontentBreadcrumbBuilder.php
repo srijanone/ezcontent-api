@@ -16,7 +16,10 @@ class EzcontentBreadcrumbBuilder implements BreadcrumbBuilderInterface {
    * {@inheritdoc}
    */
   public function applies(RouteMatchInterface $attributes) {
-    return TRUE;
+    if ($attributes->getParameter('entity')) {
+      return TRUE;
+    }
+    return FALSE;
   }
 
   /**
