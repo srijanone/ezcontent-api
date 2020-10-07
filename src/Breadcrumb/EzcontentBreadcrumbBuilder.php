@@ -30,8 +30,8 @@ class EzcontentBreadcrumbBuilder implements BreadcrumbBuilderInterface {
     $links = [];
     if ($entity) {
       $links[] = Link::createFromRoute(t('Home'), '<front>');
-      $links[] = $entity->type->entity->label();
-      $links[] = $entity->getTitle();
+      $links[] = Link::createFromRoute($entity->type->entity->label(), '<nolink>');
+      $links[] = Link::createFromRoute($entity->getTitle(), '<nolink>');
     }
     $breadcrumb = new Breadcrumb();
     // Cache breadcrumb by URL.
