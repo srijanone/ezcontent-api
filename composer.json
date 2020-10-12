@@ -21,8 +21,9 @@
     "drupal/openapi": "^2",
     "drupal/openapi_ui": "^1.0@RC",
     "drupal/openapi_ui_redoc": "^1.0@RC",
-    "drupal/openapi_ui_swagger": "^1.0@RC",
-    "drupal/simple_oauth": "^4.0"
+    "drupal/simple_oauth": "^4.0",
+    "drupal/jsonapi_explorer": "^1.0",
+    "drupal/openapi_jsonapi": "^2.0@RC"
   },
   "extra": {
     "patches": {
@@ -37,5 +38,13 @@
         "Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-23/2945817-87.patch"
       }
     }
-  }
+  },
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
