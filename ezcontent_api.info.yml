@@ -5,8 +5,9 @@ package: EZContent API
 core_version_requirement: ^8 || ^9
 dependencies:
   - decoupled_router:decoupled_router
+  - jsonapi_boost:jsonapi_boost
+  - jsonapi_explorer:jsonapi_explorer
   - jsonapi_extras:jsonapi_defaults
-  - openapi:openapi
+  - openapi_jsonapi:openapi_jsonapi
   - openapi_ui_redoc:openapi_ui_redoc
-  - openapi_ui_swagger:openapi_ui_swagger
   - simple_oauth:simple_oauth

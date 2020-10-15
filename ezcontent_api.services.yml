@@ -1,0 +1,5 @@
+services:
+  ezcontent_api_normalizer.ezcontent_breadcrumb:
+    class: Drupal\ezcontent_api\Breadcrumb\EzcontentBreadcrumbBuilder
+    tags:
+      - { name: breadcrumb_builder, priority: 100 }

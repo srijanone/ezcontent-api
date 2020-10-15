@@ -37,7 +37,6 @@ class PreviewForm extends EntityForm {
    */
   public function form(array $form, FormStateInterface $form_state) {
     $form = parent::form($form, $form_state);
-
     $preview = $this->entity;
 
     $form['label'] = [
@@ -65,7 +64,7 @@ class PreviewForm extends EntityForm {
       '#required' => TRUE,
     ];
 
-    $nodeTypes = \Drupal\node\Entity\NodeType::loadMultiple();
+    $nodeTypes = $this->entityTypeManager->getStorage('node_type')->loadMultiple();
     // If you need to display them in a drop down:
     $nodeOptions = [];
     foreach ($nodeTypes as $nodeType) {
@@ -105,7 +104,6 @@ class PreviewForm extends EntityForm {
   public function save(array $form, FormStateInterface $form_state) {
     $preview = $this->entity;
     $status = $preview->save();
-
     if ($status) {
       $this->messenger()->addMessage($this->t('%label saved.', [
         '%label' => $preview->label(),
@@ -116,12 +114,14 @@ class PreviewForm extends EntityForm {
         '%label' => $preview->label(),
       ]), MessengerInterface::TYPE_ERROR);
     }
-
     $form_state->setRedirect('entity.ezcontent_preview.collection');
   }
 
   /**
    * Helper function to check whether an Preview configuration entity exists.
+   *
+   * @param int $id
+   *   Preview on the basis of id.
    */
   public function exist($id) {
     $entity = $this->entityTypeManager->getStorage('ezcontent_preview')->getQuery()

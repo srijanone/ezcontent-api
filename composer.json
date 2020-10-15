@@ -1,30 +1,50 @@
 {
-  "name": "vinay15/ezcontent_api",
+  "name": "drupal/ezcontent_api",
   "description": "Enable api support and preview module",
   "keywords": ["ezcontent", "preview", "Drupal"],
   "type": "drupal-module",
   "license": "GPL-2.0+",
-  "homepage": "https://github.com/srijanone/ezcontent_api",
+  "homepage": "https://www.drupal.org/project/ezcontent_api",
   "support": {
-    "issues": "https://github.com/srijanone/ezcontent_api",
-    "source": "https://github.com/srijanone/ezcontent_api"
+    "issues": "https://www.drupal.org/project/issues/ezcontent_api",
+    "source": "https://git.drupalcode.org/project/ezcontent_api"
   },
   "require": {
-    "drupal/access_unpublished": "^1.0@alpha",
+    "drupal/access_unpublished": "^1.0",
+    "drupal/decoupled_router": "^2.0",
     "drupal/gatsby": "^1.0@beta",
+    "drupal/jsonapi_hypermedia": "^1.6",
+    "drupal/jsonapi_extras": "^3.12",
+    "drupal/jsonapi_boost": "^1.0",
+    "drupal/jsonapi_role_access": "^1.0",
+    "drupal/jsonapi_views": "1.x-dev#bd88808",
     "drupal/openapi": "^2",
     "drupal/openapi_ui": "^1.0@RC",
     "drupal/openapi_ui_redoc": "^1.0@RC",
-    "drupal/openapi_ui_swagger": "^1.0@RC"
+    "drupal/simple_oauth": "^4.0",
+    "drupal/jsonapi_explorer": "^1.0",
+    "drupal/openapi_jsonapi": "^2.0@RC"
   },
   "extra": {
     "patches": {
       "drupal/core": {
-        "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2020-05-20/2942975-100.patch"
+        "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2020-05-20/2942975-100.patch",
+        "ImageItem should have an derivatives computed property, to expose all image style URLs": "https://www.drupal.org/files/issues/2019-12-17/2825812-227.patch"
+      },
+      "drupal/jsonapi_extras": {
+        "Link enhancer to add Aliased URL for internal links": "https://www.drupal.org/files/issues/2019-03-08/jsonapi_extras-Field-enhancer-for-URL-alias-2942851-24.patch"
       },
       "drupal/metatag": {
         "Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-23/2945817-87.patch"
       }
     }
-  }
+  },
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
