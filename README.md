@@ -2,7 +2,7 @@
 
  * About EzContent_api
  * Key features
- * Drupal 8 Installation
+ * Drupal (8 , 9) Installation
 
 ## About EzContent_api
 
@@ -20,8 +20,12 @@ front-ends.
 for using de-coupled front ends with
 [EzContent API](https://www.drupal.org/project/ezcontent_api).
 
-## Drupal 8 Installation Via Drupal Composer
+## Note
+Since our latest release (i.e 2.0.0-alpha1) all the future changes or 
+features will be added to 2.0.x branch instead of 8.x or 9.x.
+
+## Drupal (8 , 9) Installation Via Drupal Composer
 
 ```bash
-composer require drupal/ezcontent_api:^1.0
+composer require drupal/ezcontent_api:^2.0
 ```
