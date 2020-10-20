@@ -22,7 +22,8 @@
     "drupal/openapi_ui": "^1.0@RC",
     "drupal/openapi_ui_redoc": "^1.0@RC",
     "drupal/simple_oauth": "^4.0",
-    "drupal/openapi_jsonapi": "^2.0@RC"
+    "drupal/openapi_jsonapi": "^2.0@RC",
+    "drupal/jsonapi_explorer": "^1.1"
   },
   "extra": {
     "patches": {
