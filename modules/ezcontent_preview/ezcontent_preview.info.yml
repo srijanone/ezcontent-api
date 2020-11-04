@@ -2,7 +2,7 @@ name: EZContent Preview
 type: module
 description: Provide decoupled preview
 core_version_requirement: ^8 || ^9
-package: EZContent Preview
+package: EZContent API
 configure: ezcontent.preview.config
 dependencies:
   - access_unpublished:access_unpublished
