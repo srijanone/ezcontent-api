@@ -3,3 +3,8 @@ services:
     class: Drupal\ezcontent_api\Breadcrumb\EzcontentBreadcrumbBuilder
     tags:
       - { name: breadcrumb_builder, priority: 100 }
+  ezcontent_api.jsonapi_subscriber:
+    class: Drupal\ezcontent_api\EventSubscriber\EzcontentJsonapiSubscriber
+    arguments: ['@config.factory']
+    tags:
+      - { name: event_subscriber }
