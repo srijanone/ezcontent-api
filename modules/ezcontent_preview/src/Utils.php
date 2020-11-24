@@ -92,32 +92,37 @@ class Utils {
    *   The node interface.
    * @param string $decoupledRoutes
    *   The routing config.
-   * @param string $options
+   * @param array $options
    *   The config options.
+   *
+   * @return string $siteUrl
+   *   The URL path.
    */
-  public function buildUrl(NodeInterface $node = NULL, $decoupledRoutes, $options = []) {
-    $config = $this->configFactory->get('ezcontent_preview.settings');
+  public function buildUrl(NodeInterface $node, $decoupledRoutes, $options = []) {
     $preview_base_url = $decoupledRoutes->url;
     if (!$preview_base_url) {
       $this->messenger->addMessage('Add frontend URL in module config form to view decoupled preview.', 'custom');
-      return;
+      return FALSE;
     }
     $node_id = $node->id();
     $node_alias = $this->aliasManager->getAliasByPath('/node/' . $node_id);
-    $node_type = $node->getEntityType();
 
     // If node is unpublished using
     // https://www.drupal.org/project/access_unpublished
     // module, then it should generate token and pass it to Drupal.
-    if (!$node->isPublished()) {
-
-      $tokenKey = $this->configFactory->get('access_unpublished.settings')->get('hash_key');
+    if (!$node->isPublished() || ($node->getEntityType()
+          ->isRevisionable() && !$node->isLatestRevision())) {
+      $tokenKey = $this->configFactory->get('access_unpublished.settings')
+        ->get('hash_key');
       $activeToken = $this->accessToken->getActiveAccessToken($node);
       if (!$activeToken) {
         $activeToken = $this->buildToken($node);
       }
       $tokenValue = $activeToken->get('value')->value;
-      $options['query'] = [$tokenKey => $tokenValue];
+      $options['query'] = [
+        $tokenKey => $tokenValue,
+        'resourceVersion' => 'rel:working-copy',
+      ];
     }
     $siteUrl = Url::fromUri($preview_base_url . $node_alias, $options);
     return $siteUrl;
@@ -128,19 +133,24 @@ class Utils {
    *
    * @param object $entity
    *   Entity object.
+   *
+   * @return \Drupal\Core\Entity\EntityInterface $access_token
+   *   The Access Unpublished Token.
    */
   public function buildToken($entity) {
-    $tokenKey = $this->configFactory->get('ezcontent_preview.settings')->get('ezcontent_preview_token_expire_time');
+    $tokenKey = $this->configFactory->get('ezcontent_preview.settings')
+      ->get('ezcontent_preview_token_expire_time');
     if (!$tokenKey) {
       $tokenKey = 300;
     }
-    $access_token = $this->entityTypeManager->getStorage('access_token')->create(
-      [
-        'entity_type' => $entity->getEntityType()->id(),
-        'entity_id' => $entity->id(),
-        'expire' => $this->time->getRequestTime() + $tokenKey,
-      ]
-    );
+    $access_token = $this->entityTypeManager->getStorage('access_token')
+      ->create(
+        [
+          'entity_type' => $entity->getEntityType()->id(),
+          'entity_id' => $entity->id(),
+          'expire' => $this->time->getRequestTime() + $tokenKey,
+        ]
+      );
     $access_token->save();
     return $access_token;
   }
