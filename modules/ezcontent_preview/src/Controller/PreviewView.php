@@ -65,8 +65,10 @@ class PreviewView extends ControllerBase {
    *   The node interface.
    * @param bool $preview_type
    *   The preview type.
+   *
+   * @return array|\Drupal\Core\Routing\TrustedRedirectResponse
    */
-  public function preview(NodeInterface $node = NULL, $preview_type) {
+  public function preview(NodeInterface $node, $preview_type) {
     if ($preview_type) {
       $decoupledRoutes = $this->entityTypeManager->getStorage('ezcontent_preview')->load($preview_type);
       if ($decoupledRoutes) {
