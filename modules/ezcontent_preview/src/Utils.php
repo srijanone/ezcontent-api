@@ -110,7 +110,10 @@ class Utils {
     // If node is unpublished using
     // https://www.drupal.org/project/access_unpublished
     // module, then it should generate token and pass it to Drupal.
-    if (!$node->isPublished() || ($node->getEntityType()
+    // OR if node is published, but its latest revision is not published, then
+    // it should fetch the "rel:working-copy" of the node and generate a token
+    // to access the same.
+    if (!$node->isPublished() || ($node->isPublished() && $node->getEntityType()
           ->isRevisionable() && !$node->isLatestRevision())) {
       $tokenKey = $this->configFactory->get('access_unpublished.settings')
         ->get('hash_key');
@@ -121,8 +124,12 @@ class Utils {
       $tokenValue = $activeToken->get('value')->value;
       $options['query'] = [
         $tokenKey => $tokenValue,
-        'resourceVersion' => 'rel:working-copy',
       ];
+    }
+    // Parameter that denotes, working-copy is to be fetched for the node.
+    if ($node->isPublished() && $node->getEntityType()->isRevisionable()
+      && !$node->isLatestRevision()) {
+      $options['query']['resourceVersion'] = 'rel:working-copy';
     }
     $siteUrl = Url::fromUri($preview_base_url . $node_alias, $options);
     return $siteUrl;
