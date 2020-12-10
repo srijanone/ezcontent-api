@@ -1,4 +1,4 @@
 services:
   ezcontent_preview.utils:
     class: Drupal\ezcontent_preview\Utils
-    arguments: ['@entity_type.manager', '@config.factory', '@messenger', '@path_alias.manager', '@datetime.time', '@access_unpublished.access_token_manager']
+    arguments: ['@entity_type.manager', '@config.factory', '@messenger', '@path_alias.manager', '@datetime.time', '@access_unpublished.access_token_manager', '@language.default']

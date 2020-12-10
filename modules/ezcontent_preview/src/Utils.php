@@ -4,6 +4,7 @@ namespace Drupal\ezcontent_preview;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Language\LanguageDefault;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\node\NodeInterface;
 use Drupal\Component\Datetime\TimeInterface;
@@ -60,15 +61,23 @@ class Utils {
   protected $accessToken;
 
   /**
+   * The default language.
+   *
+   * @var \Drupal\Core\Language\LanguageDefault
+   */
+  protected $defaultLanguage;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entityTypeManager, ConfigFactoryInterface $configFactory, MessengerInterface $messenger, AliasManagerInterface $aliasManager, TimeInterface $time, AccessTokenManager $accessToken) {
+  public function __construct(EntityTypeManagerInterface $entityTypeManager, ConfigFactoryInterface $configFactory, MessengerInterface $messenger, AliasManagerInterface $aliasManager, TimeInterface $time, AccessTokenManager $accessToken, LanguageDefault $defaultLanguage) {
     $this->entityTypeManager = $entityTypeManager;
     $this->configFactory = $configFactory;
     $this->messenger = $messenger;
     $this->aliasManager = $aliasManager;
     $this->time = $time;
     $this->accessToken = $accessToken;
+    $this->defaultLanguage = $defaultLanguage;
   }
 
   /**
@@ -81,7 +90,8 @@ class Utils {
       $container->get('messenger'),
       $container->get('path_alias.manager'),
       $container->get('datetime.time'),
-      $container->get('access_unpublished.access_token_manager')
+      $container->get('access_unpublished.access_token_manager'),
+      $container->get('language.default')
     );
   }
 
@@ -105,7 +115,9 @@ class Utils {
       return FALSE;
     }
     $node_id = $node->id();
-    $node_alias = $this->aliasManager->getAliasByPath('/node/' . $node_id);
+    // Fetch node's language based url alias.
+    $node_language = $node->language()->getId();
+    $node_alias = $this->aliasManager->getAliasByPath('/node/' . $node_id, $node_language);
 
     // If node is unpublished using
     // https://www.drupal.org/project/access_unpublished
@@ -131,7 +143,10 @@ class Utils {
       && !$node->isLatestRevision()) {
       $options['query']['resourceVersion'] = 'rel:working-copy';
     }
-    $siteUrl = Url::fromUri($preview_base_url . $node_alias, $options);
+    // Pass language code in url, only if we get node's language as other than
+    // 'en'.
+    $lang_code = $node_language != $this->defaultLanguage->get() ? '/' . $node_language : '';
+    $siteUrl = Url::fromUri($preview_base_url . $lang_code . $node_alias, $options);
     return $siteUrl;
   }
 
