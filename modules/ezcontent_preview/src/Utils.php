@@ -145,7 +145,7 @@ class Utils {
     }
     // Pass language code in url, only if we get node's language as other than
     // 'en'.
-    $lang_code = $node_language != $this->defaultLanguage->get() ? '/' . $node_language : '';
+    $lang_code = $node_language != $this->defaultLanguage->get()->getId() ? '/' . $node_language : '';
     $siteUrl = Url::fromUri($preview_base_url . $lang_code . $node_alias, $options);
     return $siteUrl;
   }
