@@ -77,13 +77,20 @@ class PreviewView extends ControllerBase {
           // If new tab open seperate a tab with decoupled URL
           // else just iframe.
           if ($decoupledRoutes->newtab) {
-            return new TrustedRedirectResponse($url->toString());
+            // Create new Redirect response specifying a cacheable dependency
+            // of node.
+            $response = new TrustedRedirectResponse($url->toString());
+            $response->addCacheableDependency($node);
+            return $response;
           }
           $output = '<iframe class="decoupled-content--preview" src="' . $url->toString() . '"></iframe>';
           return [
             '#type' => 'markup',
             '#allowed_tags' => ['iframe'],
             '#markup' => $output,
+            '#cache' => [
+              'tags' => ['node:' . $node->id()],
+            ],
             '#attached' => [
               'library' => [
                 'ezcontent_preview/global',
