@@ -38,7 +38,7 @@
         "Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-23/2945817-87.patch"
       },
       "drupal/decoupled_router": {
-        "Unable to resolve path on node in other language than default": "https://www.drupal.org/files/issues/2020-12-18/3111456-23-reroll-against-2.0.1.patch"
+        "Unable to resolve path on node in other language than default": "https://www.drupal.org/files/issues/2020-12-18/3111456-23-reroll.patch"
       }
     }
   },
