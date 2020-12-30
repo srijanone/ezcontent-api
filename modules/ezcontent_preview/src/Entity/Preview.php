@@ -25,17 +25,17 @@ use Drupal\ezcontent_preview\PreviewInterface;
  *     "id" = "id",
  *     "label" = "label",
  *     "url" = "url",
- *     "newtab" = "newtab",
  *     "token_time" = "token_time",
  *     "content_entity" = "content_entity",
+ *     "weight" = "weight"
  *   },
  *  config_export = {
  *     "id",
  *     "url",
  *     "label",
- *     "newtab",
  *     "token_time",
  *     "content_entity",
+ *     "weight"
  *   },
  *   links = {
  *     "edit-form" = "/admin/config/system/ezcontent_preview/{preview}",
@@ -46,13 +46,6 @@ use Drupal\ezcontent_preview\PreviewInterface;
 class Preview extends ConfigEntityBase implements PreviewInterface {
 
   /**
-   * Defining url.
-   *
-   * @var string
-   */
-  public $url;
-
-  /**
    * Defining id.
    *
    * @var string
@@ -60,18 +53,18 @@ class Preview extends ConfigEntityBase implements PreviewInterface {
   public $id;
 
   /**
+   * Defining url.
+   *
+   * @var string
+   */
+  public $url;
+
+  /**
    * Defining label.
    *
    * @var string
    */
   public $label;
-
-  /**
-   * Defining newTab.
-   *
-   * @var bool
-   */
-  public $newtab;
 
   /**
    * Defining tokenTime.
@@ -87,4 +80,11 @@ class Preview extends ConfigEntityBase implements PreviewInterface {
    */
   public $content_entity;
 
+   /**
+   * Defining contentEntity.
+   *
+   * @var int
+   */
+  public $weight;
+  
 }
