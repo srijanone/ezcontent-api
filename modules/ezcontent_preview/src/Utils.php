@@ -109,15 +109,18 @@ class Utils {
    *   The URL path.
    */
   public function buildUrl(NodeInterface $node, $decoupledRoutes, $options = []) {
-    $preview_base_url = $decoupledRoutes->url;
+
+    try {
+      $preview_base_url = \Drupal::token()->replace($decoupledRoutes->url, ['node' => $node]);
+    } catch (\Exception $e) {
+      \Drupal::logger('ezcontent_preview')->error($e->getMessage());
+      return FALSE;
+    }
+
     if (!$preview_base_url) {
       $this->messenger->addMessage('Add frontend URL in module config form to view decoupled preview.', 'custom');
       return FALSE;
     }
-    $node_id = $node->id();
-    // Fetch node's language based url alias.
-    $node_language = $node->language()->getId();
-    $node_alias = $this->aliasManager->getAliasByPath('/node/' . $node_id, $node_language);
 
     // If node is unpublished using
     // https://www.drupal.org/project/access_unpublished
@@ -143,10 +146,8 @@ class Utils {
       && !$node->isLatestRevision()) {
       $options['query']['resourceVersion'] = 'rel:working-copy';
     }
-    // Pass language code in url, only if we get node's language as other than
-    // 'en'.
-    $lang_code = $node_language != $this->defaultLanguage->get()->getId() ? '/' . $node_language : '';
-    $siteUrl = Url::fromUri($preview_base_url . $lang_code . $node_alias, $options);
+
+    $siteUrl = Url::fromUri($preview_base_url, $options);
     return $siteUrl;
   }
 
@@ -175,6 +176,59 @@ class Utils {
       );
     $access_token->save();
     return $access_token;
+  }
+
+  /**
+   * Get list of decoupled entities
+   *
+   * @return array
+   */
+  public function getDecoupledEntities() {
+    $entities = $this->entityTypeManager->getStorage('ezcontent_preview');
+    $query = $entities->getQuery();
+    $query->sort('weight', 'ASC');
+    $ids = $query->execute();
+    $getDecoupledRoutes = $entities->loadMultiple($ids);
+    return $getDecoupledRoutes;
+  }
+
+  /**
+   * Get list of decoupled entities
+   *
+   * @return array
+   */
+  public function getNodeDecoupledRoutes(NodeInterface $node) {
+    
+    $user = \Drupal::currentUser();
+    if (!$user->hasPermission('EZContent view preview')) {
+      return FALSE;
+    }
+
+    $nodeTypes = $this->entityTypeManager->getStorage('node_type')->load($node->bundle());
+
+    // if preview is enabled
+    if ($nodeTypes->get('preview_mode')) {
+      $utils = \Drupal::service('ezcontent_preview.utils');
+      $getDecoupledRoutes = $utils->getDecoupledEntities();
+      $decoupledRoutes = [];
+
+      if ($getDecoupledRoutes) {
+        foreach ($getDecoupledRoutes as $route) {
+          // check if selected entities in config form are part of current entity
+          if($route->content_entity[$node->bundle()]) {
+            $parseUrl = $utils->buildUrl($node, $route);
+            if($parseUrl) {
+              $decoupledRoutes[] = [
+                'label' =>  $route->label,
+                'url' => $parseUrl->toString()
+              ];
+            }
+          }
+        }
+      }
+      return $decoupledRoutes;
+    }
+    
   }
 
 }
