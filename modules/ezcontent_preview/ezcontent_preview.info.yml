@@ -6,3 +6,4 @@ package: EZContent API
 configure: ezcontent.preview.config
 dependencies:
   - access_unpublished:access_unpublished
+  - tokenuuid:tokenuuid

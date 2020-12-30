@@ -52,15 +52,22 @@ class PreviewForm extends EntityForm {
       '#title' => $this->t('URL'),
       '#maxlength' => 255,
       '#default_value' => $preview->url,
-      '#description' => $this->t("Decoupled URL."),
+      '#description' => $this->t("Add decoupled URL, use absolute URL even for Drupal preview, you can add token from below."),
       '#required' => TRUE,
     ];
+    $form['token_tree'] = array(
+      '#theme' => 'token_tree_link',
+      '#token_types' => ['node'],
+      '#show_restricted' => TRUE,
+      '#global_types' => TRUE,
+      '#click_insert' => TRUE,
+    );
     $form['token_time'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Token time'),
       '#maxlength' => 10,
       '#default_value' => $preview->token_time,
-      '#description' => $this->t("Time in seconds to keep the token alive."),
+      '#description' => $this->t("Time in seconds to keep the 'Access Unpublished' module's token alive."),
       '#required' => TRUE,
     ];
 
@@ -76,14 +83,7 @@ class PreviewForm extends EntityForm {
       '#options' => $nodeOptions,
       '#default_value' => $preview->content_entity,
       '#description' => $this->t("Check the content type for decoupled preview"),
-      '#required' => TRUE,
-    ];
-    $form['newtab'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('New tab'),
-      '#maxlength' => 255,
-      '#default_value' => $preview->newtab,
-      '#description' => $this->t("Preview in new tab or embeded."),
+      '#required' => FALSE,
     ];
     $form['id'] = [
       '#type' => 'machine_name',
@@ -93,7 +93,6 @@ class PreviewForm extends EntityForm {
       ],
       '#disabled' => !$preview->isNew(),
     ];
-
     // You will need additional form elements for your custom properties.
     return $form;
   }
