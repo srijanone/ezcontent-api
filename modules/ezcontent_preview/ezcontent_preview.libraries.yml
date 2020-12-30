@@ -1,7 +1,21 @@
-global:
-  version: 1.x
+content_preview-library:
+  js:
+    js/script.js: {}
   css:
     theme:
-      css/global-css.css: {}
+      css/style.css: {}
+  dependencies:
+    - core/drupal.ajax
+    - core/drupal
+    - core/jquery
+    - ezcontent_preview/content_preview-clipboard
+
+content_preview-clipboard:
+  remote: https://github.com/zenorocha/clipboard.js
+  version: 2.0.6
+  license:
+    name: MIT
+    url: https://github.com/zenorocha/clipboard.js/blob/master/LICENSE
+    gpl-compatible: true
   js:
-    js/global-js.js: {}
+    https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js: { type: external, minified: true }
