@@ -81,7 +81,7 @@ class PreviewForm extends EntityForm {
       '#type' => 'checkboxes',
       '#title' => $this->t('Content types'),
       '#options' => $nodeOptions,
-      '#default_value' => $preview->content_entity,
+      '#default_value' => $preview->content_entity ? $preview->content_entity : [],
       '#description' => $this->t("Check the content type for decoupled preview"),
       '#required' => FALSE,
     ];
