@@ -10,24 +10,20 @@ use Drupal\Core\Ajax\CommandInterface;
 class PreviewContentCommand implements CommandInterface {
 
   /**
-   * An optional list of available previews
+   * An optional list of available previews.
    *
    * @var array
    */
-  protected $preview_options;
+  protected $previewOptions;
 
   /**
    * Constructs an InvokeCommand object.
    *
-   * @param string $selector
-   *   A jQuery selector.
-   * @param string $method
-   *   The name of a jQuery method to invoke.
-   * @param array $arguments
-   *   An optional array of arguments to pass to the method.
+   * @param array $previewOptions
+   *   Configs needs to exposed to the frontend.
    */
-  public function __construct(array $preview_options = []) {
-    $this->preview_options = $preview_options;
+  public function __construct(array $previewOptions = []) {
+    $this->previewOptions = $previewOptions;
   }
 
   /**
@@ -39,7 +35,7 @@ class PreviewContentCommand implements CommandInterface {
   public function render() {
     return [
       'command' => 'previewContent',
-      'preview_options' => $this->preview_options,
+      'preview_options' => $this->previewOptions,
     ];
   }
 
