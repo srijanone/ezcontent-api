@@ -30,7 +30,7 @@
   z-index: 9;
   position: relative;
 }
-.ezcontent-preview--btn{
+.ezcontent-preview--btn {
   margin: 0 5px;
   padding: 2px 10px;
   background: #000;
@@ -39,7 +39,7 @@
   border: 0;
   border-radius: 10px;
 }
-.ezcontent-preview__actions__btn-fullscreen{
+.ezcontent-preview__actions__btn-fullscreen {
   display: none;
 }
 .ezcontent-preview--options {
@@ -91,9 +91,9 @@
 }
 
 @media (min-width: 976px) {
-  .ezcontent-preview--wrapper {	
-    top: 0;	
-    height: calc(100%);	
+  .ezcontent-preview--wrapper {
+    top: 0;
+    height: calc(100%);
   }
 
   .ezcontent-preview-active {

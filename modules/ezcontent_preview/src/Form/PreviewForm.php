@@ -55,13 +55,13 @@ class PreviewForm extends EntityForm {
       '#description' => $this->t("Add decoupled URL, use absolute URL even for Drupal preview, you can add token from below."),
       '#required' => TRUE,
     ];
-    $form['token_tree'] = array(
+    $form['token_tree'] = [
       '#theme' => 'token_tree_link',
       '#token_types' => ['node'],
       '#show_restricted' => TRUE,
       '#global_types' => TRUE,
       '#click_insert' => TRUE,
-    );
+    ];
     $form['token_time'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Token time'),

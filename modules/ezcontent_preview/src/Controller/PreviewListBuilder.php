@@ -6,11 +6,14 @@ use Drupal\Core\Config\Entity\DraggableListBuilder;
 use Drupal\Core\Entity\EntityInterface;
 
 /**
- * Provides a listing.
+ * Build entity list view.
  */
 class PreviewListBuilder extends DraggableListBuilder {
 
-  public function getFormID() {
+  /**
+   * {@inheritdoc}
+   */
+  public function getFormId() {
     return 'decoupled_preview_list';
   }
 
