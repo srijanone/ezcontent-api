@@ -80,11 +80,11 @@ class Preview extends ConfigEntityBase implements PreviewInterface {
    */
   public $content_entity;
 
-   /**
+  /**
    * Defining contentEntity.
    *
    * @var int
    */
   public $weight;
-  
+
 }

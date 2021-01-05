@@ -23,7 +23,8 @@
     "drupal/openapi_ui_redoc": "^1.0@RC",
     "drupal/simple_oauth": "^4.0",
     "drupal/openapi_jsonapi": "^2.0@RC",
-    "drupal/jsonapi_explorer": "^1.1"
+    "drupal/jsonapi_explorer": "^1.1",
+    "drupal/tokenuuid": "^1.4"
   },
   "extra": {
     "patches": {
@@ -36,6 +37,9 @@
       },
       "drupal/metatag": {
         "Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-23/2945817-87.patch"
+      },
+      "drupal/decoupled_router": {
+        "Unable to resolve path on node in other language than default": "https://www.drupal.org/files/issues/2020-12-18/3111456-23-reroll-against-2.0.1.patch"
       }
     }
   },

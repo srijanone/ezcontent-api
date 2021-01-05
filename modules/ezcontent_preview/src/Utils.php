@@ -94,12 +94,16 @@ class Utils {
    *   The routing config.
    * @param string $options
    *   The config options.
+   *
+   * @return stringtruefalse
+   *   The URL path.
    */
-  public function buildUrl(NodeInterface $node, $decoupledRoutes, $options = []) {
+  public function buildUrl(NodeInterface $node, $decoupledRoutes, array $options = []) {
 
     try {
       $preview_base_url = \Drupal::token()->replace($decoupledRoutes->url, ['node' => $node]);
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       \Drupal::logger('ezcontent_preview')->error($e->getMessage());
       return FALSE;
     }
@@ -113,8 +117,8 @@ class Utils {
     // https://www.drupal.org/project/access_unpublished
     // module, then it should generate token and pass it to Drupal.
     if (!$node->isPublished()) {
-
-      $tokenKey = $this->configFactory->get('access_unpublished.settings')->get('hash_key');
+      $tokenKey = $this->configFactory->get('access_unpublished.settings')
+        ->get('hash_key');
       $activeToken = $this->accessToken->getActiveAccessToken($node);
       if (!$activeToken) {
         $activeToken = $this->buildToken($node);
@@ -132,6 +136,9 @@ class Utils {
    *
    * @param object $entity
    *   Entity object.
+   *
+   * @return \Drupal\Core\Entity\EntityInterface
+   *   The Access Unpublished Token.
    */
   public function buildToken($entity) {
     $tokenKey = $this->configFactory->get('ezcontent_preview.settings')->get('ezcontent_preview_token_expire_time');
@@ -150,9 +157,10 @@ class Utils {
   }
 
   /**
-   * Get list of decoupled entities
+   * Get list of decoupled entities.
    *
    * @return array
+   *   Array of decoupled entities.
    */
   public function getDecoupledEntities() {
     $entities = $this->entityTypeManager->getStorage('ezcontent_preview');
@@ -164,12 +172,13 @@ class Utils {
   }
 
   /**
-   * Get list of decoupled entities
+   * Get list of decoupled entities.
    *
    * @return array
+   *   Array of decoupled entties with parsed URL for preview panel
    */
   public function getNodeDecoupledRoutes(NodeInterface $node) {
-    
+
     $user = \Drupal::currentUser();
     if (!$user->hasPermission('EZContent view preview')) {
       return FALSE;
@@ -177,7 +186,7 @@ class Utils {
 
     $nodeTypes = $this->entityTypeManager->getStorage('node_type')->load($node->bundle());
 
-    // if preview is enabled
+    // If preview is enabled.
     if ($nodeTypes->get('preview_mode')) {
       $utils = \Drupal::service('ezcontent_preview.utils');
       $getDecoupledRoutes = $utils->getDecoupledEntities();
@@ -185,13 +194,13 @@ class Utils {
 
       if ($getDecoupledRoutes) {
         foreach ($getDecoupledRoutes as $route) {
-          // check if selected entities in config form are part of current entity
-          if($route->content_entity[$node->bundle()]) {
+          // If the current node is part of selected entties.
+          if ($route->content_entity[$node->bundle()]) {
             $parseUrl = $utils->buildUrl($node, $route);
-            if($parseUrl) {
+            if ($parseUrl) {
               $decoupledRoutes[] = [
-                'label' =>  $route->label,
-                'url' => $parseUrl->toString()
+                'label' => $route->label,
+                'url' => $parseUrl->toString(),
               ];
             }
           }
@@ -199,7 +208,7 @@ class Utils {
       }
       return $decoupledRoutes;
     }
-    
+
   }
 
 }

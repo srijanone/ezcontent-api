@@ -1,6 +1,10 @@
 <?php
 
-use Drupal\Core\Entity\EntityForm;
+/**
+ * @file
+ * Module implementation file.
+ */
+
 use Drupal\Core\Url;
 use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -11,22 +15,21 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 
 use Drupal\ezcontent_preview\Ajax\PreviewContentCommand;
-use Drupal\ezcontent_preview\Utils;
 
 /**
- * Implements hook_views_data_alter()
+ * Implements hook_views_data_alter().
  */
 function ezcontent_preview_views_data_alter(&$data) {
-	$label = 'Published or Access Unpublished Token';
-	$data['node']['published_access_unpublished_token'] = array(
-		'title' => $label,
-		'filter' => array(
-			'title' => $label,
-			'help' => t('Published or Access unpublish content with token'),
-			'field' => 'nid',
-			'id' => 'published_access_unpublished_token'
-		),
-	);
+  $label = 'Published or Access Unpublished Token';
+  $data['node']['published_access_unpublished_token'] = [
+    'title' => $label,
+    'filter' => [
+      'title' => $label,
+      'help' => t('Published or Access unpublish content with token'),
+      'field' => 'nid',
+      'id' => 'published_access_unpublished_token',
+    ],
+  ];
 }
 
 /**
@@ -53,14 +56,14 @@ function ezcontent_preview_form_alter(array &$form, FormStateInterface $form_sta
   $form_object = $form_state->getFormObject();
   if ($form_object instanceof ContentEntityForm) {
     if ($form_object->getEntity()->getEntityTypeId() == 'node') {
-			// only if there are router enabled
-			$entity = $form_object->getEntity();
-			$libs = ezcontent_preview_add_libraries($entity);
-			if($libs) {
-				$form['#attached']['library'][] = $libs;
-				$form['actions']['preview']['#ajax']['callback'] = '_ezcontent_preview_submit_ajax_form';
-				$form['actions']['preview']['#attributes']['class'][] = 'ezcontent-preview--preview-btn';
-			}
+      // Only if there are router enabled.
+      $entity = $form_object->getEntity();
+      $libs = ezcontent_preview_add_libraries($entity);
+      if ($libs) {
+        $form['#attached']['library'][] = $libs;
+        $form['actions']['preview']['#ajax']['callback'] = '_ezcontent_preview_submit_ajax_form';
+        $form['actions']['preview']['#attributes']['class'][] = 'ezcontent-preview--preview-btn';
+      }
     }
   }
 }
@@ -77,8 +80,8 @@ function ezcontent_preview_form_alter(array &$form, FormStateInterface $form_sta
  *   Returns ajax response.
  */
 function _ezcontent_preview_submit_ajax_form(array &$form, FormStateInterface $form_state) {
-	
-	// Early return if error found.
+
+  // Early return if error found.
   $response = new AjaxResponse();
   if (!empty($form_state->getErrors())) {
     $message = [
@@ -90,7 +93,7 @@ function _ezcontent_preview_submit_ajax_form(array &$form, FormStateInterface $f
 
     return $response;
   }
-	
+
   $form_id = $form_state->getFormObject()->getFormId();
   $form_object = $form_state->getFormObject();
   if ($form_object instanceof ContentEntityForm) {
@@ -101,11 +104,11 @@ function _ezcontent_preview_submit_ajax_form(array &$form, FormStateInterface $f
     $entity->in_preview = TRUE;
     $uuid = $entity->uuid();
     // Setting storage for preview.
-		$store->set($uuid, $form_state);
-		
-		$utils = \Drupal::service('ezcontent_preview.utils');
-		$decoupledRoutes = $utils->getNodeDecoupledRoutes($entity);
-		$response->addCommand(new PreviewContentCommand($decoupledRoutes));
+    $store->set($uuid, $form_state);
+
+    $utils = \Drupal::service('ezcontent_preview.utils');
+    $decoupledRoutes = $utils->getNodeDecoupledRoutes($entity);
+    $response->addCommand(new PreviewContentCommand($decoupledRoutes));
   }
   return $response;
 }
@@ -115,32 +118,33 @@ function _ezcontent_preview_submit_ajax_form(array &$form, FormStateInterface $f
  */
 function ezcontent_preview_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
   if ($entity->getEntityTypeId() === 'node' && $view_mode === 'full' && !isset($entity->in_preview)) {
-		// add button on node view page
-		// but hide on preview page itself
-		$libs = ezcontent_preview_add_libraries($entity);
-		if($libs) {
-			$build['#attached']['library'][] = $libs;
-			$build['preview_button'] = array(
-				'#title' => t('Preview'),
-  			'#type' => 'link',
-				'#url' => Url::fromRoute('ezcontent_preview.node.ajax_view', ['node' => $entity->id()]),
-				'#attributes' => [
-					'class' => ['use-ajax', 'preview--btn']
-				]
-			);
-		}
+    // Add button on node view page
+    // but hide on preview page itself.
+    $libs = ezcontent_preview_add_libraries($entity);
+    if ($libs) {
+      $build['#attached']['library'][] = $libs;
+      $build['preview_button'] = [
+        '#title' => t('Preview'),
+        '#weight' => -10,
+        '#type' => 'link',
+        '#url' => Url::fromRoute('ezcontent_preview.node.ajax_view', ['node' => $entity->id()]),
+        '#attributes' => [
+          'class' => ['use-ajax', 'preview--btn'],
+        ],
+      ];
+    }
   }
 }
 
 /**
- * Common function for adding libraries
+ * Common function for adding libraries.
  */
 function ezcontent_preview_add_libraries($entity) {
-	if ($entity->getEntityTypeId() === 'node') {
-		$utils = \Drupal::service('ezcontent_preview.utils');
-		$decoupledRoutes = $utils->getNodeDecoupledRoutes($entity);
-		if ($decoupledRoutes) {
-			return 'ezcontent_preview/content_preview-library';
-		}
+  if ($entity->getEntityTypeId() === 'node') {
+    $utils = \Drupal::service('ezcontent_preview.utils');
+    $decoupledRoutes = $utils->getNodeDecoupledRoutes($entity);
+    if ($decoupledRoutes) {
+      return 'ezcontent_preview/content_preview-library';
+    }
   }
 }
