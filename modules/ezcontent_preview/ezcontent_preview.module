@@ -55,14 +55,29 @@ function ezcontent_preview_form_alter(array &$form, FormStateInterface $form_sta
   // Attached library at form levels.
   $form_object = $form_state->getFormObject();
   if ($form_object instanceof ContentEntityForm) {
-    if ($form_object->getEntity()->getEntityTypeId() == 'node') {
+    if ($form_object->getEntity()->getEntityTypeId() === 'node') {
       // Only if there are router enabled.
       $entity = $form_object->getEntity();
       $libs = ezcontent_preview_add_libraries($entity);
       if ($libs) {
         $form['#attached']['library'][] = $libs;
-        $form['actions']['preview']['#ajax']['callback'] = '_ezcontent_preview_submit_ajax_form';
-        $form['actions']['preview']['#attributes']['class'][] = 'ezcontent-preview--preview-btn';
+        /// hide core preview if enabled
+        if($form['actions']['preview']) {
+          $form['actions']['preview']['#type'] = 'hidden';
+        }
+        // new preview button
+        $form['actions']['preview'] = [
+          '#type' => 'submit',
+          '#access' => 1,
+          '#value' => t('Preview'),
+          '#weight' => 20,
+          '#attributes' => [
+            'class' => ['ezcontent-preview--preview-btn']
+          ],
+          '#ajax' => [
+            'callback' => '_ezcontent_preview_submit_ajax_form',
+          ],
+        ];
       }
     }
   }
