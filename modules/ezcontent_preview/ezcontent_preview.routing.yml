@@ -30,9 +30,3 @@ entity.ezcontent_preview.delete_form:
   requirements:
     _permission: 'EZContent preview config'
 
-ezcontent_preview.node.ajax_view:
-  path: '/node/{node}/ajax-preview'
-  defaults:
-    _controller: '\Drupal\ezcontent_preview\Controller\NodePreviewAjax::showPreviewPanel'
-  requirements:
-    _permission: 'EZContent view preview'

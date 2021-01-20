@@ -62,7 +62,7 @@ function ezcontent_preview_form_alter(array &$form, FormStateInterface $form_sta
       if ($libs) {
         $form['#attached']['library'][] = $libs;
         /// hide core preview if enabled
-        if($form['actions']['preview']) {
+        if(isset($form['actions']['preview'])) {
           $form['actions']['preview']['#type'] = 'hidden';
         }
         // new preview button
@@ -126,29 +126,6 @@ function _ezcontent_preview_submit_ajax_form(array &$form, FormStateInterface $f
     $response->addCommand(new PreviewContentCommand($decoupledRoutes));
   }
   return $response;
-}
-
-/**
- * Implements hook_entity_view().
- */
-function ezcontent_preview_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
-  if ($entity->getEntityTypeId() === 'node' && $view_mode === 'full' && !isset($entity->in_preview)) {
-    // Add button on node view page
-    // but hide on preview page itself.
-    $libs = ezcontent_preview_add_libraries($entity);
-    if ($libs) {
-      $build['#attached']['library'][] = $libs;
-      $build['preview_button'] = [
-        '#title' => t('Preview'),
-        '#weight' => -10,
-        '#type' => 'link',
-        '#url' => Url::fromRoute('ezcontent_preview.node.ajax_view', ['node' => $entity->id()]),
-        '#attributes' => [
-          'class' => ['use-ajax', 'preview--btn'],
-        ],
-      ];
-    }
-  }
 }
 
 /**
