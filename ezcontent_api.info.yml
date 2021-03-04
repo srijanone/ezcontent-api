@@ -4,9 +4,11 @@ description: 'Improves Drupal core JSONAPI experience.'
 package: EZContent API
 core_version_requirement: ^8.8 || ^9
 dependencies:
+  - ezcontent:ezcontent_listing
   - decoupled_router:decoupled_router
   - jsonapi_boost:jsonapi_boost
   - jsonapi_extras:jsonapi_defaults
+  - jsonapi_hypermedia:jsonapi_hypermedia
   - openapi_jsonapi:openapi_jsonapi
   - openapi_ui_redoc:openapi_ui_redoc
   - simple_oauth:simple_oauth
