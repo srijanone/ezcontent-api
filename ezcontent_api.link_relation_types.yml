@@ -1,2 +1,5 @@
 breadcrumb:
-  description: Ezcontent Jasonapi Resource Breadcrumb Link.
+  description: Ezcontent Jsonapi Resource Breadcrumb Link.
+
+content_listing:
+  description: Ezcontent Jsonapi Resource Content Listing Link.
