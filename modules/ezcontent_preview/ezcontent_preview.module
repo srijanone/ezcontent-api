@@ -66,7 +66,7 @@ function ezcontent_preview_form_alter(array &$form, FormStateInterface $form_sta
           $form['actions']['preview']['#type'] = 'hidden';
         }
         // new preview button
-        $form['actions']['preview'] = [
+        $form['actions']['ezcontent_preview'] = [
           '#type' => 'submit',
           '#access' => 1,
           '#value' => t('Preview'),
