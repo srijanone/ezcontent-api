@@ -29,7 +29,7 @@
   "extra": {
     "patches": {
       "drupal/core": {
-        "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2020-05-20/2942975-100.patch",
+        "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2021-11-22/layout_builder-rebase_drupal_9_3_x-2942975-159.patch",
         "ImageItem should have an derivatives computed property, to expose all image style URLs": "https://www.drupal.org/files/issues/2020-07-16/2825812_229.patch"
       },
       "drupal/jsonapi_extras": {
