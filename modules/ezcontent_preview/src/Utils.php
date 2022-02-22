@@ -117,6 +117,7 @@ class Utils {
     // https://www.drupal.org/project/access_unpublished
     // module, then it should generate token and pass it to Drupal.
     if (!$node->isPublished()) {
+
       $tokenKey = $this->configFactory->get('access_unpublished.settings')
         ->get('hash_key');
       $activeToken = $this->accessToken->getActiveAccessToken($node);
