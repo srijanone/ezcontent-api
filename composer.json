@@ -24,13 +24,13 @@
     "drupal/simple_oauth": "^5.0",
     "drupal/openapi_jsonapi": "^2.0@RC",
     "drupal/jsonapi_explorer": "^1.1",
-    "drupal/tokenuuid": "^1.4"
+    "drupal/tokenuuid": "^2.0"
   },
   "extra": {
     "patches": {
       "drupal/core": {
-        "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2021-11-22/layout_builder-rebase_drupal_9_3_x-2942975-159.patch",
-        "ImageItem should have a derivatives computed property, to expose all image style URLs": "https://www.drupal.org/files/issues/2021-07-09/2825812-240.patch"
+        "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2022-04-06/2942975-core-3-x_188.patch",
+        "ImageItem should have an derivatives computed property, to expose all image style URLs": " https://www.drupal.org/files/issues/2021-07-08/2825812-237.patch"
       },
       "drupal/jsonapi_extras": {
         "Link enhancer to add Aliased URL for internal links": "https://www.drupal.org/files/issues/2019-03-08/jsonapi_extras-Field-enhancer-for-URL-alias-2942851-24.patch"
