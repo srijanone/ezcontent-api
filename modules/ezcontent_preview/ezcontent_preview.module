@@ -58,26 +58,28 @@ function ezcontent_preview_form_alter(array &$form, FormStateInterface $form_sta
     if ($form_object->getEntity()->getEntityTypeId() === 'node') {
       // Only if there are router enabled.
       $entity = $form_object->getEntity();
-      $libs = ezcontent_preview_add_libraries($entity);
-      if ($libs) {
-        $form['#attached']['library'][] = $libs;
-        /// hide core preview if enabled
-        if(isset($form['actions']['preview'])) {
-          $form['actions']['preview']['#type'] = 'hidden';
+      if ($entity->id()) {
+        $libs = ezcontent_preview_add_libraries($entity);
+        if ($libs) {
+          $form['#attached']['library'][] = $libs;
+          // Hide core preview if enabled.
+          if (isset($form['actions']['preview'])) {
+            $form['actions']['preview']['#type'] = 'hidden';
+          }
+          // New preview button.
+          $form['actions']['ezcontent_preview'] = [
+            '#type' => 'submit',
+            '#access' => 1,
+            '#value' => t('Preview'),
+            '#weight' => 20,
+            '#attributes' => [
+              'class' => ['ezcontent-preview--preview-btn'],
+            ],
+            '#ajax' => [
+              'callback' => '_ezcontent_preview_submit_ajax_form',
+            ],
+          ];
         }
-        // new preview button
-        $form['actions']['ezcontent_preview'] = [
-          '#type' => 'submit',
-          '#access' => 1,
-          '#value' => t('Preview'),
-          '#weight' => 20,
-          '#attributes' => [
-            'class' => ['ezcontent-preview--preview-btn']
-          ],
-          '#ajax' => [
-            'callback' => '_ezcontent_preview_submit_ajax_form',
-          ],
-        ];
       }
     }
   }
