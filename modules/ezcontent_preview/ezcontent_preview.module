@@ -69,7 +69,6 @@ function ezcontent_preview_form_alter(array &$form, FormStateInterface $form_sta
           // New preview button.
           $form['actions']['ezcontent_preview'] = [
             '#type' => 'submit',
-            // '#access' => 1,
             '#value' => t('Preview'),
             '#weight' => 20,
             '#attributes' => [
