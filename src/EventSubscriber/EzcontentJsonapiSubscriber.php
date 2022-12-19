@@ -2,10 +2,10 @@
 
 namespace Drupal\ezcontent_api\EventSubscriber;
 
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Drupal\Core\Cache\CacheableResponseInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
@@ -39,10 +39,10 @@ class EzcontentJsonapiSubscriber implements EventSubscriberInterface {
    * the jsonapi url whose cache-context needs to be added for cache
    * invalidating.
    *
-   * @param \Symfony\Component\HttpKernel\Event\FilterResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\ResponseEvent $event
    *   The event to process.
    */
-  public function onResponse(FilterResponseEvent $event) {
+  public function onResponse(ResponseEvent $event) {
     $request = $event->getRequest();
     $response = $event->getResponse();
     // Fetch the jsonapi path prefix from the config.
