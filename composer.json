@@ -10,18 +10,18 @@
     "source": "https://git.drupalcode.org/project/ezcontent_api"
   },
   "require": {
-    "drupal/access_unpublished": "^1.0",
+    "drupal/access_unpublished": "^1.5",
     "drupal/decoupled_router": "^2.0",
 
-    "drupal/jsonapi_hypermedia": "^1.6",
-    "drupal/jsonapi_extras": "^3.12",
+    "drupal/jsonapi_hypermedia": "^1.9",
+    "drupal/jsonapi_extras": "^3.23",
 
 
 
-    "drupal/openapi": "^2",
+    "drupal/openapi": "^2.1",
     "drupal/openapi_ui": "^1.0@RC",
     "drupal/openapi_ui_redoc": "^1.0@RC",
-    "drupal/simple_oauth": "^5.0",
+    "drupal/simple_oauth": "^6.0@beta",
     "drupal/openapi_jsonapi": "^3.0"
 
 
