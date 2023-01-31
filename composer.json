@@ -12,7 +12,7 @@
   "require": {
     "drupal/access_unpublished": "^1.5",
     "drupal/decoupled_router": "^2.0",
-
+    "drupal/gatsby":"2.0.x-dev@dev",
     "drupal/jsonapi_hypermedia": "^1.9",
     "drupal/jsonapi_extras": "^3.23",
     "drupal/jsonapi_boost":"^2.0",
