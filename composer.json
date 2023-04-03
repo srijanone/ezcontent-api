@@ -25,7 +25,7 @@
       "drupal/openapi":"^2.1",
       "drupal/openapi_ui":"^1.0@RC",
       "drupal/openapi_ui_redoc":"^1.0@RC",
-      "drupal/simple_oauth":"^6.0@beta",
+      "drupal/simple_oauth":"^5.2.3",
       "drupal/openapi_jsonapi":"^3.0",
       "drupal/jsonapi_explorer":"dev-3288136-automated-drupal-10",
       "drupal/tokenuuid":"^2.0"
