@@ -36,6 +36,7 @@
            "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2023-02-08/2942975-230.patch"
           },
          "drupal/jsonapi_extras":{
+            "$request->get may no longer return array as of Symfony 6.0": "https://www.drupal.org/files/issues/2023-01-08/jsonapi_extras_3331874.patch",
             "Link enhancer to add Aliased URL for internal links":"https://www.drupal.org/files/issues/2019-03-08/jsonapi_extras-Field-enhancer-for-URL-alias-2942851-24.patch"
          },
          "drupal/metatag":{
