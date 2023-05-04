@@ -37,7 +37,7 @@
           },
          "drupal/jsonapi_extras":{
             "$request->get may no longer return array as of Symfony 6.0": "https://www.drupal.org/files/issues/2023-01-08/jsonapi_extras_3331874.patch",
-            "Link enhancer to add Aliased URL for internal links":"https://www.drupal.org/files/issues/2019-03-08/jsonapi_extras-Field-enhancer-for-URL-alias-2942851-24.patch"
+            "Link enhancer to add Aliased URL for internal links":"https://www.drupal.org/files/issues/2021-05-19/jsonapi_extras-url_link_enhancer-2942851-40.patch"
          },
          "drupal/metatag":{
             "Support JSON API, REST, GraphQL and custom normalizations":"https://www.drupal.org/files/issues/2020-02-23/2945817-87.patch"
