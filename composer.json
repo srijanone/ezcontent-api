@@ -21,7 +21,7 @@
       "drupal/jsonapi_extras":"^3.23",
       "drupal/jsonapi_boost":"^2.0",
       "drupal/jsonapi_role_access":"1.0.x-dev@dev",
-      "drupal/jsonapi_views":"dev-3288151-automated-drupal-10",
+      "drupal/jsonapi_views":"^1.1",
       "drupal/openapi":"^2.1",
       "drupal/openapi_ui":"^1.0@RC",
       "drupal/openapi_ui_redoc":"^1.0@RC",
@@ -45,10 +45,6 @@
       }
    },
    "repositories":[
-      {
-         "type":"vcs",
-         "url":"https://git.drupalcode.org/issue/jsonapi_views-3288151"
-      },
       {
          "type":"vcs",
          "url":"https://git.drupalcode.org/issue/jsonapi_explorer-3288136"
