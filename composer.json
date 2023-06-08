@@ -41,6 +41,9 @@
          },
          "drupal/metatag":{
             "Support JSON API, REST, GraphQL and custom normalizations":"https://www.drupal.org/files/issues/2020-02-23/2945817-87.patch"
+         },
+         "drupal/gatsby": {
+            "The 0 entity type does not exist -3365519":"https://www.drupal.org/files/issues/2023-06-08/3365519-4.patch"
          }
       }
    },
