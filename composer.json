@@ -1,55 +1,58 @@
 {
-  "name": "drupal/ezcontent_api",
-  "description": "Enable api support and preview module",
-  "keywords": ["ezcontent", "preview", "Drupal"],
-  "type": "drupal-module",
-  "license": "GPL-2.0+",
-  "homepage": "https://www.drupal.org/project/ezcontent_api",
-  "support": {
-    "issues": "https://www.drupal.org/project/issues/ezcontent_api",
-    "source": "https://git.drupalcode.org/project/ezcontent_api"
-  },
-  "require": {
-    "drupal/access_unpublished": "^1.0",
-    "drupal/decoupled_router": "^2.0",
-    "drupal/gatsby": "^1.0@beta",
-    "drupal/jsonapi_hypermedia": "^1.6",
-    "drupal/jsonapi_extras": "^3.12",
-    "drupal/jsonapi_boost": "^2.0",
-    "drupal/jsonapi_role_access": "^1.0",
-    "drupal/jsonapi_views": "1.x-dev#bd88808",
-    "drupal/openapi": "^2",
-    "drupal/openapi_ui": "^1.0@RC",
-    "drupal/openapi_ui_redoc": "^1.0@RC",
-    "drupal/simple_oauth": "^5.0",
-    "drupal/openapi_jsonapi": "^2.0@RC",
-    "drupal/jsonapi_explorer": "^1.1",
-    "drupal/tokenuuid": "^2.0"
-  },
-  "extra": {
-    "patches": {
-      "drupal/core": {
-        "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2022-04-06/2942975-core-3-x_188.patch",
-        "ImageItem should have an derivatives computed property, to expose all image style URLs": "https://www.drupal.org/files/issues/2021-07-08/2825812-237.patch",
-        "Make BaseFieldOverride inherit internal property from the base field -3274419": "https://www.drupal.org/files/issues/2022-04-09/drupal-base-field-override-inherit-internal-3274419-2-9.4.patch"
-      },
-      "drupal/jsonapi_extras": {
-        "Link enhancer to add Aliased URL for internal links": "https://www.drupal.org/files/issues/2019-03-08/jsonapi_extras-Field-enhancer-for-URL-alias-2942851-24.patch"
-      },
-      "drupal/metatag": {
-        "Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-23/2945817-87.patch"
-      },
-      "drupal/decoupled_router": {
-        "Unable to resolve path on node in other language than default": "https://www.drupal.org/files/issues/2020-12-18/3111456-23-reroll.patch"
+   "name": "drupal/ezcontent_api",
+   "description": "Enable api support and preview module",
+   "keywords": ["ezcontent", "preview", "Drupal"],
+   "type": "drupal-module",
+   "license": "GPL-2.0+",
+   "homepage": "https://www.drupal.org/project/ezcontent_api",
+   "support": {
+     "issues": "https://www.drupal.org/project/issues/ezcontent_api",
+     "source": "https://git.drupalcode.org/project/ezcontent_api"
+   },
+   "require":{
+      "drupal/access_unpublished":"^1.5",
+      "drupal/decoupled_router":"^2.0",
+      "drupal/gatsby":"2.0.x-dev@dev",
+      "drupal/jsonapi_hypermedia":"^1.9",
+      "drupal/jsonapi_extras":"^3.23",
+      "drupal/jsonapi_boost":"^2.0",
+      "drupal/jsonapi_role_access":"1.0.x-dev@dev",
+      "drupal/jsonapi_views":"^1.1",
+      "drupal/openapi":"^2.1",
+      "drupal/openapi_ui":"^1.0@RC",
+      "drupal/openapi_ui_redoc":"^1.0@RC",
+      "drupal/simple_oauth":"^5.2.3",
+      "drupal/openapi_jsonapi":"^3.0",
+      "drupal/jsonapi_explorer":"dev-3288136-automated-drupal-10",
+      "drupal/tokenuuid":"^2.0"
+   },
+   "extra":{
+      "patches":{
+         "drupal/core": {
+           "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2023-02-08/2942975-230.patch"
+          },
+         "drupal/jsonapi_extras":{
+            "$request->get may no longer return array as of Symfony 6.0": "https://www.drupal.org/files/issues/2023-01-08/jsonapi_extras_3331874.patch",
+            "Link enhancer to add Aliased URL for internal links":"https://www.drupal.org/files/issues/2021-05-19/jsonapi_extras-url_link_enhancer-2942851-40.patch"
+         },
+         "drupal/metatag":{
+            "Support JSON API, REST, GraphQL and custom normalizations":"https://www.drupal.org/files/issues/2020-02-23/2945817-87.patch"
+         },
+         "drupal/gatsby": {
+            "The 0 entity type does not exist -3365519":"https://www.drupal.org/files/issues/2023-06-08/3365519-4.patch"
+         }
       }
-    }
-  },
-  "repositories": {
-    "drupal": {
-      "type": "composer",
-      "url": "https://packages.drupal.org/8"
-    }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
-}
+   },
+   "repositories":[
+      {
+         "type":"vcs",
+         "url":"https://git.drupalcode.org/issue/jsonapi_explorer-3288136"
+      },
+      {
+         "type":"composer",
+         "url":"https://packages.drupal.org/8"
+      }
+   ],
+   "minimum-stability": "dev",
+   "prefer-stable": true
+ }

@@ -30,7 +30,6 @@ permissions:
   - 'administer display modes'
   - 'administer menu'
   - 'configure any layout'
-  - 'use text format restricted_html'
   - 'view all revisions'
   - 'view latest version'
   - 'view media'
