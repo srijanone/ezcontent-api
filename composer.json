@@ -30,7 +30,8 @@
       "patches":{
          "drupal/core": {
             "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2023-02-08/2942975-230.patch",
-            "ImageItem should have an derivatives computed property, to expose all image style URLs": "https://www.drupal.org/files/issues/2023-04-10/2825812-248.patch"
+            "ImageItem should have an derivatives computed property, to expose all image style URLs": "https://www.drupal.org/files/issues/2023-04-10/2825812-248.patch",
+            "Make BaseFieldOverride inherit internal property from the base field": "https://www.drupal.org/files/issues/2023-01-20/3274419-42.patch"
            },
          "drupal/jsonapi_extras":{
             "$request->get may no longer return array as of Symfony 6.0": "https://www.drupal.org/files/issues/2023-01-08/jsonapi_extras_3331874.patch",
