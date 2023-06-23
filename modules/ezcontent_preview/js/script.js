@@ -61,7 +61,7 @@ $.fn.copyUrl = function() {
 }
 
 $.fn.closePreview = function() {
-  $('.ezcontent-preview__actions__btn-close').once('preview_close').click(function() {
+  $(once('preview_close', '.ezcontent-preview__actions__btn-close')).click(function (){
     $('.ezcontent-preview--wrapper').animate({
       transform: 'translate(100%, 0)'
     }, 'slow', 'linear', function() {
@@ -75,7 +75,7 @@ $.fn.closePreview = function() {
 }
 
 $.fn.fullScreen = function() {
-  $('.ezcontent-preview__actions__btn-fullscreen').once('preview_fullscreen').click(function() {
+  $(once('preview_fullscreen', '.ezcontent-preview__actions__btn-fullscreen')).click(function (){
     let el = $(this);
     if (el.text() == "Exit Fullscreen") {
     }
