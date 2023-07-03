@@ -1,0 +1,7 @@
+name: 'EZ Content JSON:API Extension'
+type: module
+description: 'Extends JSON:API module to provide additional custom API resources.'
+core_version_requirement: ^8 || ^9 || ^10
+package: Custom
+dependencies:
+  - jsonapi
