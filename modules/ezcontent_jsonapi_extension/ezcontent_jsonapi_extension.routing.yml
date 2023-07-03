@@ -1,0 +1,7 @@
+ezcontent_jsonapi_extension.api_resource:
+  path: '/jsonapi/media/image/{machine_name}/{id}'
+  defaults:
+    _controller: '\Drupal\ezcontent_jsonapi_extension\Plugin\jsonapi\resource\EzResourceMediaImage::get'
+    _format: 'json'
+  requirements:
+    _permission: 'access content'

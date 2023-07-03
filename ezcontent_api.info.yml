@@ -12,3 +12,4 @@ dependencies:
   - openapi_jsonapi:openapi_jsonapi
   - openapi_ui_redoc:openapi_ui_redoc
   - simple_oauth:simple_oauth
+  - ezcontent_jsonapi_extension:ezcontent_jsonapi_extension
