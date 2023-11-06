@@ -29,8 +29,7 @@
       "patches":{
          "drupal/core": {
            "Expose Layout Builder data to REST and JSON:API": "https://www.drupal.org/files/issues/2023-02-08/2942975-230.patch",
-           "ImageItem should have an derivatives computed property, to expose all image style URLs": "https://www.drupal.org/files/issues/2023-04-10/2825812-248.patch",
-           "Make BaseFieldOverride inherit internal property from the base field": "https://www.drupal.org/files/issues/2023-01-20/3274419-42.patch"
+           "ImageItem should have an derivatives computed property, to expose all image style URLs": "https://www.drupal.org/files/issues/2023-04-10/2825812-248.patch"
           },
          "drupal/jsonapi_extras":{
             "Link enhancer to add Aliased URL for internal links":"https://www.drupal.org/files/issues/2021-05-19/jsonapi_extras-url_link_enhancer-2942851-40.patch"
